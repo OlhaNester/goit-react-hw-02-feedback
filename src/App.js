@@ -1,42 +1,58 @@
-
 import React, { Component } from 'react';
 import Statistics from './component/Statistics';
 import FeedbackOptions from './component/FeedbackOptions';
+import Section from './component/Section';
+import Notification from './component/Notification';
 
 export class App extends Component {
-      state = {
-      good: 0,
-      neutral: 0,
-      bad: 0
-    };
-    
-  
-  handleChange = (event) => {
-       this.setState((prevState) => ({ [event.target.name]: prevState[event.target.name] + 1, }));
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
- 
-  render() {
-    const total = Object.values(this.state).reduce(function (a, b) { return (a + b) });
-    const positivePercentage = Math.round((this.state.good / total) * 100);
-    const options = Object.keys(this.state);
+  handleChange = event => {
+    this.setState(prevState => ({
+      [event.target.name]: prevState[event.target.name] + 1,
+    }));
+  };
+  countTotalFeedback = () => {
+    return Object.values(this.state).reduce(function (a, b) {
+      return a + b;
+    });
+  };
+  countPositiveFeedbackPercentage = () => {
+    return Math.round((this.state.good / this.countTotalFeedback()) * 100);
+  };
 
+  render() {
+    const options = Object.keys(this.state);
 
     return (
       <div>
-        <h1>Pleese leave feedback</h1>
-        <FeedbackOptions options={options} onLeaveFeedback={this.handleChange}/>
-        
-        <h2>Statistic</h2>
-        <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={ total} positivePercentage={positivePercentage} />
-        
-        
+        <p> Do you like our coffee?</p>
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.handleChange}
+          />
+        </Section>
+        <Section title="Statistic">
+          {this.countTotalFeedback() === 0 ? (
+            <Notification message="There is no feedback"></Notification>
+          ) : (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback}
+              positivePercentage={this.countPositiveFeedbackPercentage}
+            />
+          )}
+        </Section>
       </div>
-    )
+    );
   }
 }
 
 export default App;
-
-
-
