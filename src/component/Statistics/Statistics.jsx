@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import { StatisticContainer } from './Statistics.styled';
+
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
     <StatisticContainer>
@@ -9,6 +11,14 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
       <p>Positive feedback: {positivePercentage()}%</p>
     </StatisticContainer>
   );
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  total: PropTypes.func,
+  positivePercentage: PropTypes.func,
 };
 
 export default Statistics;

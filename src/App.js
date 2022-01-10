@@ -3,6 +3,7 @@ import Statistics from './component/Statistics';
 import FeedbackOptions from './component/FeedbackOptions';
 import Section from './component/Section';
 import Notification from './component/Notification';
+import { AppContainer, Doyoulike } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -29,8 +30,8 @@ export class App extends Component {
     const options = Object.keys(this.state);
 
     return (
-      <div>
-        <p> Do you like our coffee?</p>
+      <AppContainer>
+        <Doyoulike> Do you like our coffee?</Doyoulike>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={options}
@@ -50,7 +51,7 @@ export class App extends Component {
             />
           )}
         </Section>
-      </div>
+      </AppContainer>
     );
   }
 }
