@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/goit-react-hw-02-feedback/static/js/main.9c27d1ab.js",
+    "static/media/hero.png": "/goit-react-hw-02-feedback/static/media/hero.ad74bbf6292af33426f9.png",
+    "index.html": "/goit-react-hw-02-feedback/index.html",
+    "main.9c27d1ab.js.map": "/goit-react-hw-02-feedback/static/js/main.9c27d1ab.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.9c27d1ab.js"
+  ]
+}
