@@ -18,7 +18,8 @@ export class App extends Component {
     }));
   };
   countTotalFeedback = () => {
-     return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+     return good + neutral + bad;
     // return Object.values(this.state).reduce(function (a, b) {
     //   return a + b;
     // });
