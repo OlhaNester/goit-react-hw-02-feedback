@@ -18,10 +18,10 @@ export class App extends Component {
     }));
   };
   countTotalFeedback = () => {
-    // return this.state.good + this.state.neutral + this.state.bad;
-    return Object.values(this.state).reduce(function (a, b) {
-      return a + b;
-    });
+     return this.state.good + this.state.neutral + this.state.bad;
+    // return Object.values(this.state).reduce(function (a, b) {
+    //   return a + b;
+    // });
   };
   countPositiveFeedbackPercentage = () => {
     return Math.round((this.state.good / this.countTotalFeedback()) * 100);
